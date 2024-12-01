@@ -109,4 +109,26 @@ export class MoviesService {
       );
     }
   }
+
+  async getMoviesByIds(ids: number[]) {
+    try {
+      if (!ids.length) {
+        throw new BadRequestException('No movie IDs provided');
+      }
+
+      const moviesPromises = ids.map((id) =>
+        this.getMovieDetails(id.toString()),
+      );
+
+      const movies = await Promise.all(moviesPromises);
+
+      return movies;
+    } catch (error) {
+      if (error instanceof BadRequestException) throw error;
+
+      throw new InternalServerErrorException(
+        `Error fetching movies by ids. Please try again later.`,
+      );
+    }
+  }
 }
