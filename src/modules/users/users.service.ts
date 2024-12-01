@@ -16,7 +16,7 @@ export class UsersService {
       return await this.usersRepository.save(user);
     } catch (error) {
       throw new InternalServerErrorException(
-        `Error creating user: ${error.message}`,
+        'Error creating user. Please try again later',
       );
     }
   }
@@ -28,7 +28,7 @@ export class UsersService {
       return user;
     } catch (error) {
       throw new InternalServerErrorException(
-        `Error finding user: ${error.message}`,
+        'Error finding user. Please try again later',
       );
     }
   }

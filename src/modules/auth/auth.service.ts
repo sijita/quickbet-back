@@ -43,7 +43,7 @@ export class AuthService {
       }
 
       throw new InternalServerErrorException(
-        `Error creating user: ${error.message}`,
+        'Error creating user. Please try again later',
       );
     }
   }
@@ -75,7 +75,7 @@ export class AuthService {
       }
 
       throw new InternalServerErrorException(
-        `Error logging in: ${error.message}`,
+        'Error logging in. Please try again later',
       );
     }
   }
