@@ -17,7 +17,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async register({ name, username, email, password }: CreateUserDto) {
+  async register({ email, password }: CreateUserDto) {
     try {
       const user = await this.usersService.findUserByEmail(email);
 
@@ -28,14 +28,12 @@ export class AuthService {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       await this.usersService.createUser({
-        name,
-        username,
         email,
         password: hashedPassword,
       });
 
       return {
-        message: 'User created successfully',
+        message: 'User registered successfully',
       };
     } catch (error) {
       if (error instanceof BadRequestException) {

@@ -7,18 +7,6 @@ import { axiosClient } from 'src/common/utils/axios-client';
 
 @Injectable()
 export class MoviesService {
-  async getPopularMovies() {
-    try {
-      const { data } = await axiosClient.get('/movie/popular');
-
-      return data.results;
-    } catch (error) {
-      throw new InternalServerErrorException(
-        `Error fetching popular movies. Please try again later.`,
-      );
-    }
-  }
-
   async getNowPlayingMovies() {
     try {
       const { data } = await axiosClient.get('/movie/now_playing');

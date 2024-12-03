@@ -1,24 +1,7 @@
-import {
-  IsAlphanumeric,
-  IsEmail,
-  IsNotEmpty,
-  IsString,
-  Matches,
-  MinLength,
-} from 'class-validator';
+import { IsEmail, IsNotEmpty, Matches } from 'class-validator';
 import { passwordRegEx } from 'src/common/utils/constants';
 
 export class CreateUserDto {
-  @IsNotEmpty()
-  @IsString()
-  @MinLength(5)
-  name: string;
-
-  @IsNotEmpty()
-  @IsAlphanumeric()
-  @MinLength(5)
-  username: string;
-
   @IsNotEmpty()
   @IsEmail()
   email: string;
